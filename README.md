@@ -2,6 +2,8 @@
 
 This is a quick example of integrating [ION-Tools](https://www.npmjs.com/package/@decentralized-identity/ion-tools) and [DID-SDK](https://github.com/TBD54566975/ssi-sdk)
 
+### This is only an example for experimental use, please don't host it in public network without security review. 
+
 This example implements 2 RESTFUL API to provide some DID and VC related functionalities such as 
 - generating/resolving DID
     * /api/did/generate
@@ -15,7 +17,10 @@ This example implements 2 RESTFUL API to provide some DID and VC related functio
     * /api/vc/accounts
     * /api/vc/transactions
 
-The Golang service wraps DID SDK, it provides plain interface which takes a PrivateKey to sign and takse a PublicKey to veirify 
-The JS-express service is the external interface, which invokes the Go http server for DID-SDK access, this is configured with option 'DidDemoServiceEndpoint'
+#The JS-express service is the external interface, 
+It invokes the Go http server for DID-SDK access, this is configured by option `DidDemoServiceEndpoint`
 
-### This is only an example for experimental use, please don't host it in public network without security review. 
+#The Golang service wraps DID SDK, 
+it provides plain interface which 
+- Takes a PrivateKey to sign 
+- Takes a PublicKey to verify 
