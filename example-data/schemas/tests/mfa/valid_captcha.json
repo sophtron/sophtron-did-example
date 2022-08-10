@@ -1,0 +1,11 @@
+{
+    "challenges" : [
+        {
+            "challengeType" : "captcha",
+            "subType": "input",
+            "display" : "string",
+            "responseType": "text",
+            "question": "Please type in the token shown in the captcha picture"
+        }
+    ]
+}

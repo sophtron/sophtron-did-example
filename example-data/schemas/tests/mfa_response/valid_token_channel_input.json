@@ -1,0 +1,9 @@
+{
+    "responses" : [
+        {
+            "challengeType" : "token_channel",
+            "subType": "input",
+            "response": "the-number-or-email"
+        }
+    ]
+}

@@ -1,0 +1,166 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://api.sophtron.com/schema/draft/mfa.json",
+    "title": "MfaChallengeCredential",
+    "description": "MFA challenges request",
+    "properties": {
+        "challenges": {
+            "type": "array",
+            "items" : {
+                "type": "object",
+                "properties": {
+                    "challengeType": {
+                        "description": "The mfa challenge type",
+                        "type": "string",
+                        "enum" : [
+                                "captcha", 
+                                "token_input", 
+                                "token_channel", 
+                                "questions",
+                                "approval"
+                            ]
+                    },
+                    "question": {
+                        "type" : "string",
+                        "description": "the question or label of this challenge"
+                    }
+                },
+                "anyOf":[
+                    {
+                        "properties" : {
+                            "challengeType" : { "const":  "captcha" }
+                        },
+                        "anyOf":[
+                            {
+                                "properties" : {
+                                    "subType" : { "const": "input" },
+                                    "display": { 
+                                        "type": "string",
+                                        "description" : "Base64 Encoded image blob"
+                                    },
+                                    "responseType": { 
+                                        "const" : "text",
+                                        "description" : "The response needs to be a single text input -- the answer to the recaptcha"
+                                    }
+                                }
+                            },
+                            {
+                                "properties" : {
+                                    "subType" : { "const": "select" },
+                                    "display": { 
+                                        "type": "array",
+                                        "description" : "Array of Base64 Encoded image blob",
+                                        "items": { 
+                                            "type": "object",
+                                            "description" : "Base64 Encoded image blob with a unique id to identify",
+                                            "properties" : {
+                                                "key" : {
+                                                    "type": "string",
+                                                    "description": "the identifier of the image, can be a simple index value"
+                                                },
+                                                "value" : {
+                                                    "type": "string",
+                                                    "description" : "Base64 Encoded image blob"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "responseType": { 
+                                        "const" : "array",
+                                        "description" : "The response needs to be an array of integers -- the selected image indexes of the recaptcha"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "properties" : {
+                            "challengeType" : { "const":  "questions" },
+                            "subType" : { "const": "none" },
+                            "display": { 
+                                "type": "array",
+                                "description" : "Array of security questions",
+                                "items": {
+                                    "type" : "string",
+                                    "description": "The text of the question"
+                                }
+                            },
+                            "responseType": { 
+                                "const" : "array",
+                                "description" : "The response needs to be an array of key value pairs -- the question and answer"
+                            }
+                        }
+                    },
+                    {
+                        "properties" : {
+                            "challengeType" : { "const":  "token_input" },
+                            "subType" : { "const": "input" },
+                            "display": { 
+                                "type": "string",
+                                "description" : "The description of the input required, e.g. `token sent to phone`, `token sent to email`, `url sent to emmail`"
+                            },
+                            "responseType": { 
+                                "const" : "text",
+                                "description" : "The response needs to be single string - the token"
+                            }
+                        }
+                    },
+                    {
+                        "properties" : {
+                            "challengeType" : { "const":  "token_channel" }
+                        },
+                        "anyOf":[
+                            {
+                                "properties" : {
+                                    "subType" : { "const": "input" },
+                                    "display": { 
+                                        "type": "string",
+                                        "description" : "The description of the input required, e.g. `confirm the security number or email`"
+                                    },
+                                    "responseType": { 
+                                        "const" : "text",
+                                        "description" : "The response needs to be single string - the token"
+                                    }
+                                }
+                            },
+                            {
+                                "properties" : {
+                                    "subType" : { "const": "select" },
+                                    "display": { 
+                                        "type": "array",
+                                        "description" : "The list of token method to pick from",
+                                        "items": { 
+                                            "type": "string",
+                                            "description" : "The phone number or email address"
+                                        }
+                                    },
+                                    "responseType": { 
+                                        "const" : "text",
+                                        "description" : "The response needs to be single string - the selected token method"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "properties" : {
+                            "challengeType" : { "const": "approval" },
+                            "subType" : { "const": "none" },
+                            "display": { 
+                                "type": "string",
+                                "description" : "The token to input or read to phone, or approve from device"
+                            },
+                            "responseType": { 
+                                "const" : "confirmation",
+                                "description" : "The response needs to be a flag - the confirmation of the `token read`/`approval`"
+                            }
+                        }
+                    }
+                ],
+                "required": [ "challengeType", "subType", "display", "responseType", "question" ]
+            }
+        }
+    },
+    "required": [ "challenges" ],
+    "additionalProperties": false
+}

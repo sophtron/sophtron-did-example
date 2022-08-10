@@ -1,0 +1,9 @@
+{
+    "responses" : [
+        {
+            "challengeType" : "token_input",
+            "subType": "input",
+            "response": "the-token"
+        }
+    ]
+}

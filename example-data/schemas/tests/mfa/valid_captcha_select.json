@@ -1,0 +1,48 @@
+{
+    "challenges" : [
+        {
+            "challengeType" : "captcha",
+            "subType": "select",
+            "display" : [
+                {
+                    "key" : "0",
+                    "value" : "the-blob"
+                },
+                {
+                    "key" : "1",
+                    "value" : "the-blob"
+                },
+                {
+                    "key" : "2",
+                    "value" : "the-blob"
+                },
+                {
+                    "key" : "3",
+                    "value" : "the-blob"
+                },
+                {
+                    "key" : "4",
+                    "value" : "the-blob"
+                },
+                {
+                    "key" : "5",
+                    "value" : "the-blob"
+                },
+                {
+                    "key" : "6",
+                    "value" : "the-blob"
+                },
+                {
+                    "key" : "7",
+                    "value" : "the-blob"
+                },
+                {
+                    "key" : "8",
+                    "value" : "the-blob"
+                }
+            ],
+            "responseType": "array",
+            "question" : "Please select all pictures that has 'traffic lights'"
+        }
+    ]
+}

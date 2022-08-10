@@ -1,0 +1,135 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://api.sophtron.com/schema/draft/mfa.json",
+    "title": "MfaResponseCredential",
+    "description": "Response schema to MFA challenges",
+    "properties": {
+        "responses": {
+            "type": "array",
+            "items" : {
+                "type": "object",
+                "properties": {
+                    "challengeType": {
+                        "description": "The mfa challenge type",
+                        "type": "string",
+                        "enum" : [
+                                "captcha", 
+                                "token_input", 
+                                "token_channel", 
+                                "questions",
+                                "approval"
+                            ]
+                    },
+                    "metadata": {
+                        "description" : "Additional data object to provide more information while collecting the data if needed",
+                        "type": "object"
+                    }
+                },
+                "anyOf":[
+                    {
+                        "properties" : {
+                            "challengeType" : { "const":  "captcha" }
+                        },
+                        "anyOf":[
+                            {
+                                "properties" : {
+                                    "subType" : { "const": "input" },
+                                    "response": { 
+                                        "type": "string",
+                                        "description" : "The response needs to be a single text input -- the answer to the recaptcha"
+                                    }
+                                }
+                            },
+                            {
+                                "properties" : {
+                                    "subType" : { "const": "select" },
+                                    "response": { 
+                                        "type" : "array",
+                                        "description" : "The response needs to be an array of integers -- the selected image keys of the recaptcha",
+                                        "items": {
+                                            "type" : "string",
+                                            "description": "The key of selected image"
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "properties" : {
+                            "challengeType" : { "const":  "questions" },
+                            "subType" : { "const": "none" },
+                            "response": { 
+                                "type" : "array",
+                                "description" : "The response needs to be an array of key value pairs -- the question and answer",
+                                "items": {
+                                    "type" : "object",
+                                    "description": "The question with answer",
+                                    "properties": {
+                                        "key" : {
+                                            "type" : "string"
+                                        },
+                                        "value": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    {
+                        "properties" : {
+                            "challengeType" : { "const":  "token_input" },
+                            "subType" : { "const": "input" },
+                            "response": { 
+                                "type" : "string",
+                                "description" : "The response needs to be single string - the token"
+                            }
+                        },
+                        "additionalProperties": false
+                    },
+                    {
+                        "properties" : {
+                            "challengeType" : { "const":  "token_channel" }
+                        },
+                        "anyOf":[
+                            {
+                                "properties" : {
+                                    "subType" : { "const": "input" },
+                                    "response": { 
+                                        "type" : "string",
+                                        "description" : "The response needs to be single string - the phone number or email address"
+                                    }
+                                }
+                            },
+                            {
+                                "properties" : {
+                                    "subType" : { "const": "select" },
+                                    "response": { 
+                                        "type" : "string",
+                                        "description" : "The response needs to be single string - the selected token method"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "properties" : {
+                            "challengeType" : { "const": "approval" },
+                            "subType" : { "const": "none" },
+                            "response": { 
+                                "const" : "true",
+                                "description" : "The response needs to be a flag - the confirmation of the `token read`/`approval`"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                ],
+                "required": [ "challengeType", "subType", "response" ]
+            }
+        }
+    },
+    "required": [ "responses" ],
+    "additionalProperties": false
+}

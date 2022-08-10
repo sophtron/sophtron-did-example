@@ -1,0 +1,11 @@
+{
+    "challenges" : [
+        {
+            "challengeType" : "token_channel",
+            "subType": "input",
+            "display" : "******678",
+            "question": "Please type in your full security mobile number",
+            "responseType": "text"
+        }
+    ]
+}

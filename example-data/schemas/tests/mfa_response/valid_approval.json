@@ -1,0 +1,9 @@
+{
+    "responses" : [
+        {
+            "challengeType" : "approval",
+            "subType": "none",
+            "response": "true"
+        }
+    ]
+}

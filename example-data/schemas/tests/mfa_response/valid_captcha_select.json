@@ -1,0 +1,11 @@
+{
+    "responses" : [
+        {
+            "challengeType" : "captcha",
+            "subType": "select",
+            "response": [
+                "0","7","8"
+            ]
+        }
+    ]
+}

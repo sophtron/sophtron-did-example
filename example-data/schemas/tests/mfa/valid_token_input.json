@@ -1,0 +1,11 @@
+{
+    "challenges" : [
+        {
+            "challengeType" : "token_input",
+            "subType": "input",
+            "display" : "mobile ending 567",
+            "responseType": "text",
+            "question": "Pleae type in the token sent to your mobile "
+        }
+    ]
+}

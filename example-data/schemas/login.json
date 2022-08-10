@@ -1,0 +1,27 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://api.sophtron.com/schema/draft/mfa.json",
+    "title": "Login Credential",
+    "description": "User credentials for login",
+    "type": "object",
+    "properties": {
+      "loginName": {
+        "description": "The login name",
+        "type": "string"
+      },
+      "loginNameType": {
+        "description": "The type of login name, e.g. E-mail, User Id, User Name, Customer Number etc.",
+        "type": "string"
+      },
+      "organization": {
+        "description": "The Organization identifier if login into an organisation. e.g. when loggin into a work account with providing company name and user name.",
+        "type": "string"
+      },
+      "password": {
+        "description": "The login password",
+        "type": "string"
+      }
+    },
+    "required": [ "loginName", "password" ],
+    "additionalProperties": false
+  }

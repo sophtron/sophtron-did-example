@@ -1,0 +1,14 @@
+{
+    "responses" : [
+        {
+            "challengeType" : "questions",
+            "subType": "none",
+            "response": [
+                {
+                    "key": "question",
+                    "value": "answer"
+                }
+            ]
+        }
+    ]
+}

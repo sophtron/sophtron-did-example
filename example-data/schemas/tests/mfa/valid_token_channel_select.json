@@ -1,0 +1,14 @@
+{
+    "challenges" : [
+        {
+            "challengeType" : "token_channel",
+            "subType": "select",
+            "display" : [
+                "m1",
+                "m2"
+            ],
+            "responseType": "text",
+            "question": "Please select your security number or email address to send security token to"
+        }
+    ]
+}

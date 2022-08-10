@@ -1,0 +1,11 @@
+{
+    "challenges" : [
+        {
+            "challengeType" : "approval",
+            "subType": "none",
+            "display" : "your token is 67865",
+            "responseType": "confirmation",
+            "question": "The bank is calling your security mobile. please answer with this token"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "challenges" : [
+        {
+            "challengeType" : "questions",
+            "subType": "none",
+            "display" : [
+                "q1",
+                "q2"
+            ],
+            "responseType": "array",
+            "question": "Please select and awnser the security question"
+        }
+    ]
+}

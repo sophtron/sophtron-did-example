@@ -1,0 +1,9 @@
+{
+    "responses" : [
+        {
+            "challengeType" : "token_channel",
+            "subType": "select",
+            "response": "method_text"
+        }
+    ]
+}

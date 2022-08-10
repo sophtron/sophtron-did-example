@@ -1,0 +1,9 @@
+{
+    "responses" : [
+        {
+            "challengeType" : "captcha",
+            "subType": "input",
+            "response": "answer"
+        }
+    ]
+}
