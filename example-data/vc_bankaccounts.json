@@ -22,7 +22,7 @@
                 "balanceAsOf": "2022-08-10T01:25:29.54",
                 "balanceType": "ASSET",
                 "currency": {
-                    "currencyCode": ""
+                    "currencyCode": "USD"
                 },
                 "currentBalance": 100,
                 "nickname": "Primary Checking",
