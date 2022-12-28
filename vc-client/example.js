@@ -66,7 +66,14 @@ const apiClient = (function(){
   // need a UserInstitutionID to demo with. get a random one from the available list
   let connections = await apiClient.getUserInstitutionsByUser();
   if(connections && connections.length > 0){
-    let vc = await axios.post('https://vc.sophtron-prod.com/api/vc/identity/' + connections[0].UserInstitutionID, null, {headers:{IntegrationKey: integrationKey}})
+    let vc = await axios.post(
+      'https://vc.sophtron-prod.com/api/vc/identity/' + connections[0].UserInstitutionID,
+      null, 
+      {
+        headers: {
+          IntegrationKey: integrationKey
+        }
+      })
       .then(res => res.data)
       .catch(error => {
         console.log(error.message);
